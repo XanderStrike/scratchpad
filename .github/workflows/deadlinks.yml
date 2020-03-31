@@ -1,0 +1,21 @@
+name: Check Markdown links
+
+on: 
+on: 
+  push:
+    branches:
+    - master
+  schedule:
+  - cron: "0 9 * * *"
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: gaurav-nelson/github-action-markdown-link-check@0.6.0
+      with:
+        use-quiet-mode: 'yes'
+        use-verbose-mode: 'yes'
+        config-file: 'mlc_config.json'
+        folder-path: 'docs/markdown_files'
